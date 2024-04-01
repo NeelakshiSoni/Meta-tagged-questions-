@@ -1,0 +1,22 @@
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', nodes: 'List[TreeNode]') -> 'TreeNode':
+        
+        
+        def dfs(node) : 
+            if not node : 
+                return 
+            if node in nodes : 
+                return node 
+            
+            l = dfs(node.left)
+            r = dfs(node.right) 
+            if l and r : 
+                return node 
+            elif l : 
+                return l 
+            elif r : 
+                return r 
+            else : 
+                None 
+                
+        return dfs(root)
