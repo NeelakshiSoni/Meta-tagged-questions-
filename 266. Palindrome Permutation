@@ -1,0 +1,16 @@
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        
+        freq = defaultdict(int) 
+        
+        for i , char in enumerate(s) : 
+            freq[char] += 1 
+            
+        odd = 0 
+            
+        for k , val in freq.items() : 
+            if val%2 : 
+                odd += 1
+                
+        return odd == 1 or odd == 0 
+        
