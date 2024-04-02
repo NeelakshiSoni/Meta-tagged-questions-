@@ -1,0 +1,16 @@
+Permutations: 
+N!.
+
+Combinations:  NcK
+
+(N−k)!k!
+N!
+​
+ 
+
+Subsets:  2**n 
+2
+�
+2 
+N
+ , since each element could be absent or present.
