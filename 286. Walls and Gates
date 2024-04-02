@@ -1,0 +1,31 @@
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
+        """
+        Do not return anything, modify rooms in-place instead.
+        """
+        m = len(rooms) 
+        n = len(rooms[0]) 
+        q = deque()
+        
+        
+        for i in range(m) : 
+            for j in range(n) : 
+                if rooms[i][j] == 0 : 
+                    q.append((i , j , 0 ))
+        #print(q)
+                    
+        while q : 
+            
+            r , c , step = q.popleft()
+            #print(rooms , step )
+            
+            for dr , dc  in [[1 , 0] , [0 , 1] , [-1 , 0] , [0 , -1]] : 
+                newR = r + dr 
+                newC = c + dc 
+                if 0 <= newR < m and 0 <= newC < n and rooms[newR][newC] != -1 : 
+                    if rooms[newR][newC] > step + 1 : 
+                        rooms[newR][newC] = step + 1
+                        q.append((newR , newC , step + 1))
+        return rooms 
+        
+        
