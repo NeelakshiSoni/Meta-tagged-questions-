@@ -1,0 +1,23 @@
+class Solution:
+    def minKnightMoves(self, x: int, y: int) -> int:
+        
+        q = deque() 
+        
+        q.append((0 , 0  , 0))
+        visited = set()
+        
+        while q : 
+            r , c , step = q.popleft() 
+            if r == x and c == y : 
+                return step 
+            
+            
+            
+            for dr , dc in [[1 , -2] , [2 , -1] , [2 , 1] , [1 , 2] , [-1 , 2] , [-2 , 1] , [-1, -2] , [-2 , -1]] : 
+                newR , newC = r + dr , c + dc 
+                if (newR , newC) not in visited :
+                    q.append((newR , newC , step + 1))
+                    visited.add((newR , newC))
+        return -1 
+                
+                
