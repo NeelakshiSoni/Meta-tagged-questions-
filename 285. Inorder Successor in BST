@@ -1,0 +1,30 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def inorderSuccessor(self, root: TreeNode, p: TreeNode) -> Optional[TreeNode]:
+        node_seen = False 
+        self.ans = None 
+        
+        
+        def dfs(node) : 
+            nonlocal node_seen
+            if not node : 
+                return 
+            
+            dfs(node.left)
+            
+            if node_seen : 
+                self.ans = node 
+                node_seen = False
+            
+            if node == p : 
+                node_seen = True 
+                
+            dfs(node.right)
+        dfs(root)
+        return self.ans 
